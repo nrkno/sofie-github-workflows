@@ -10,7 +10,7 @@ on:
         default: false
       tags-to-keep:
         description: "Tags to keep from being pruned"
-        required: true
+        required: false
         type: string
         default: |
           main
@@ -19,34 +19,34 @@ on:
           nightly
       tags-to-keep-regex:
         description: "Tags to keep from being pruned (regex)"
-        required: true
+        required: false
         type: string
         default: | 
           ^release
           ^v(\d+).(\d+).(\d+)
       tags-to-prune-regex:
         description: "Tags to prune (regex)"
-        required: true
+        required: false
         type: string
         default: .*
       dry-run:
         description: "Dry run"
-        required: true
+        required: false
         type: boolean
         default: true
       keep-younger-than:
         description: "Keep tags younger than X days"
-        required: true
+        required: false
         type: number
         default: 14
       keep-last:
         description: "Keep the last X tags"
-        required: true
+        required: false
         type: string
         default: 10
       package-name:
         description: "Name of the package"
-        required: true
+        required: false
         type: string
     secrets:
       prune-token:
