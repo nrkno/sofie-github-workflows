@@ -71,7 +71,7 @@ jobs:
       - name: Prune tagged docker images
         uses: vlaurin/action-ghcr-prune@v0.5.0
         with:
-          token: ${{ secrets.GHCR_PRUNE_TOKEN}}
+          token: ${{ secrets.prune-token }}
           organization: ${{ github.repository_owner }}
           container: ${{ inputs.package-name }}
           dry-run: ${{ inputs.dry-run }}
