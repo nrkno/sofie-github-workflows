@@ -1,0 +1,81 @@
+name: "Prune docker images"
+
+on:
+  workflow_call:
+    inputs:
+      prune-untagged:
+        description: "Prune all untagged images"
+        required: false
+        type: boolean
+      tags-to-keep:
+        description: "Tags to keep from being pruned"
+        required: true
+        type: string
+        default: |
+          main
+          master
+          latest
+          nightly
+      tags-to-keep-regex:
+        description: "Tags to keep from being pruned (regex)"
+        required: true
+        type: string
+        default: | 
+          ^release
+          ^v(\d+).(\d+).(\d+)
+      tags-to-prune-regex:
+        description: "Tags to prune (regex)"
+        required: true
+        type: string
+      dry-run:
+        description: "Activate dry run"
+        required: true
+        type: boolean
+        default: true
+      keep-younger-than:
+        description: "Keep tags younger than X days"
+        required: true
+        type: number
+        default: 14
+      keep-last:
+        description: "Keep the last X tags"
+        required: true
+        type: string
+        default: 10
+      package-name:
+        description: "Name of the package"
+        required: true
+        type: string
+    secrets:
+      prune-token:
+        description: "Secret needed for GHCR access"
+        required: true
+         
+
+jobs:
+  prune-docker-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prune untagged docker images
+        uses: vlaurin/action-ghcr-prune@v0.5.0
+        if: ${{ inputs.prune-untagged }}
+        with:
+          token: ${{ secrets.prune-token }}
+          organization: ${{ github.repository_owner }}
+          container: ${{ inputs.package-name }}
+          dry-run: ${{ inputs.dry-run }}
+          prune-untagged: ${{ inputs.prune-untagged }}
+
+      - name: Prune tagged docker images
+        uses: vlaurin/action-ghcr-prune@v0.5.0
+        with:
+          token: ${{ secrets.GHCR_PRUNE_TOKEN}}
+          organization: ${{ github.repository_owner }}
+          container: ${{ inputs.package-name }}
+          dry-run: ${{ inputs.dry-run }}
+          keep-younger-than: ${{ inputs.keep-younger-than }}
+          keep-last: ${{ inputs.keep-last}}
+          keep-tags: ${{ inputs.tags-to-keep }}
+          keep-tags-regexes: ${{ inputs.tags-to-keep-regex}}
+          prune-tags-regexes: ${{ inputs.tags-to-prune-regex}}
+
