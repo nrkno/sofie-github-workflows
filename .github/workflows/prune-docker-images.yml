@@ -23,8 +23,8 @@ on:
         required: false
         type: string
         default: | 
-          ^release(\d+)$
-          ^v(\d+).(\d+).(\d+)$
+          ^release(\d+)
+          ^v(\d+).(\d+).(\d+)
       tags-to-prune-regex:
         description: "Tags to prune (regex)"
         required: false
