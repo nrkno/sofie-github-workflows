@@ -17,6 +17,7 @@ on:
           master
           latest
           nightly
+          develop
       tags-to-keep-regex:
         description: "Tags to keep from being pruned (regex)"
         required: false
