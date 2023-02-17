@@ -27,7 +27,7 @@ on:
         description: "Runners to use"
         required: false
         type: string
-        default: ubuntu-latest
+        default: "['ubuntu-latest']"
       tags:
         description: "Tags to build"
         required: false
@@ -42,7 +42,7 @@ on:
 jobs:
   container-image-release:
     name: Make container image release
-    runs-on: ${{ inputs.runners }}
+    runs-on: ${{ fromJson(inputs.runners) }}
     timeout-minutes: 15
 
     steps:
