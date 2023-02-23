@@ -1,0 +1,17 @@
+{
+    "plugins": ["@typescript-eslint"],
+    "extends": ["plugin:github/recommended", "./node_modules/@sofie-automation/code-standard-preset/eslint/main"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 9,
+      "sourceType": "module",
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "i18n-text/no-en": 0
+    },
+    "env": {
+      "node": true,
+      "es6": true
+    }
+  }

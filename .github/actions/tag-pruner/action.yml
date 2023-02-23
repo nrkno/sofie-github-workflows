@@ -1,0 +1,14 @@
+name: 'Sofie Git repository tag tidier'
+description: 'Provide a description here'
+author: 'nrkno'
+inputs:
+  older-than:
+    required: true
+    description: 'Tags older than the specified number of days will be deleted (required)'
+  ignore:
+    description: 'Regex pattern for tags that should be ignored'
+  simulation:
+    description: 'Run in simulation mode which will list the tags to be deleted without deleting them'    
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
