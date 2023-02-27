@@ -1,0 +1,8 @@
+{
+  "extends": "@sofie-automation/code-standard-preset/ts/tsconfig.lib",
+  "compilerOptions": {
+    "outDir": "./lib",
+    "rootDir": "./src"
+  },
+  "exclude": ["node_modules", "dist", "lib"]
+}
