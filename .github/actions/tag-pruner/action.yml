@@ -1,5 +1,5 @@
-name: 'Sofie Git repository tag tidier'
-description: 'Provide a description here'
+name: 'Sofie GitHub repository tag pruner'
+description: 'This action can be used to prune tags from GitHub repositories based on their age. An optional regex filter allows matching tags to be ignored'
 author: 'nrkno'
 inputs:
   older-than:
