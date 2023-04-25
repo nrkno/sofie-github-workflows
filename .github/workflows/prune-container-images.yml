@@ -49,6 +49,11 @@ on:
         description: "Name of the package"
         required: false
         type: string
+      runners:
+        description: "Runner labels to use"
+        required: false
+        type: string
+        default: "['ubuntu-latest']"
     secrets:
       prune-token:
         description: "Secret needed for GHCR access"
@@ -57,7 +62,7 @@ on:
 
 jobs:
   prune-container-images:
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJson(inputs.runners)}}
     steps:
       - name: Prune untagged container images
         uses: vlaurin/action-ghcr-prune@v0.5.0
