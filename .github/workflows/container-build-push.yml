@@ -51,7 +51,7 @@ jobs:
 
       - name: Create the image tags
         id: image-tag
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         with:
           images: ${{ inputs.registry }}/${{ inputs.image }}
           tags: ${{ inputs.tags }}
