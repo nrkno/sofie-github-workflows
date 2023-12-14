@@ -1,4 +1,4 @@
-name: "Prune container images"
+name: "Prune Container Images"
 
 on:
   workflow_call:

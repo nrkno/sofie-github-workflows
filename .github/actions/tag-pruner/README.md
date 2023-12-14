@@ -1,4 +1,4 @@
-# Sofie Tag Pruner
+# Sofie GitHub Tag Pruner
 
 Use this action to clean up tags in GitHub repositories.
 
