@@ -65,7 +65,7 @@ jobs:
     runs-on: ${{ fromJson(inputs.runners)}}
     steps:
       - name: Prune untagged container images
-        uses: vlaurin/action-ghcr-prune@v0.5.0
+        uses: vlaurin/action-ghcr-prune@v0.6.0
         if: ${{ inputs.prune-untagged }}
         with:
           token: ${{ secrets.prune-token }}
@@ -75,7 +75,7 @@ jobs:
           prune-untagged: ${{ inputs.prune-untagged }}
 
       - name: Prune tagged container images
-        uses: vlaurin/action-ghcr-prune@v0.5.0
+        uses: vlaurin/action-ghcr-prune@v0.6.0
         with:
           token: ${{ secrets.prune-token }}
           organization: ${{ github.repository_owner }}
