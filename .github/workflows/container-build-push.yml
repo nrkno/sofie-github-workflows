@@ -37,7 +37,6 @@ on:
           type=ref,event=branch
           type=ref,event=tag
           type=raw,value=latest,enable={{is_default_branch}}
-    
 
 jobs:
   container-image-release:
@@ -46,8 +45,10 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - name: Check out repo 
+      - name: Check out repo
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Create the image tags
         id: image-tag
@@ -75,4 +76,3 @@ jobs:
           provenance: false
           labels: ${{ steps.image-tag.outputs.labels }}
           tags: "${{ steps.image-tag.outputs.tags }}"
-
